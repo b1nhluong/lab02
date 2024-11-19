@@ -19,12 +19,16 @@ public class Cart {
 	}
 
 	// Method to add a DVD to the cart
-	public void addDigitalVideoDisc(DigitalVideoDisc disc) {
-		if (qtyOrdered() < MAX_NUMBERS_ORDERED) {
-			itemsOrdered.add(disc);
-			System.out.println("The disc has been added successfully.");
+	public void addDigitalVideoDisc(DigitalVideoDisc [] dvdList) {
+		int N = dvdList.length;
+		if (qtyOrdered() >= MAX_NUMBERS_ORDERED) {
+			System.out.println("The cart is almost full.");
+		} else if (qtyOrdered() + N > MAX_NUMBERS_ORDERED) {
+			System.out.println("Too many discs.");
 		} else {
-			System.out.println("The cart is full. Cannot add more DVDs.");
+			for (int i = 0; i < N; i++) {
+				itemsOrdered.add(dvdList[i]);
+			}
 		}
 	}
 
