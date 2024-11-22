@@ -20,6 +20,11 @@ public class Aims {
 		System.out.println("DVD1's id is: " + dvd1.getId());
 		System.out.println("DVD2's id is: " + dvd2.getId());
 		System.out.println(DigitalVideoDisc.getNbDigitalVideoDiscs());
+		cart.display();
 		
+		
+		Store store = new Store();
+		store.addDVD(dvd2);
+		store.removeDVD(dvd2);
 	}
 }
