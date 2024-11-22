@@ -78,5 +78,56 @@ public class Cart {
 		}
 		return cost;
 	}
+	
+	public void display() {
+		System.out.println("***********************CART***********************");
+		System.out.println("Ordered Items: ");
+		float total = 0;
+		for (int i = 0; i < this.qtyOrdered();i++) {
+			total = total + this.itemsOrdered.get(i).getCost();
+			System.out.println((i+1) + ". " + this.itemsOrdered.get(i).getTitle() + " - " + this.itemsOrdered.get(i).getCategory() + " - " + this.itemsOrdered.get(i).getDirector() + " - " + this.itemsOrdered.get(i).getLength() +": " + this.itemsOrdered.get(i).getCost() + "$");
+		}
+		System.out.println("Total cost: " + total);
+		System.out.println("***************************************************");
+	}
+	
+	public void searchTitle(String title) {
+	    boolean found = false;
+	    System.out.println("Searching for title: " + title);
+	    for (DigitalVideoDisc disc : itemsOrdered) {
+	        if (disc.getTitle().equalsIgnoreCase(title)) {
+	            System.out.println("Found: " + disc.getTitle() + " (ID: " + disc.getId() + ", Cost: $" + disc.getCost() + ")");
+	            found = true;
+	            break;
+	        }
+	    }
+	    if (!found) {
+	        System.out.println("No DVD with title \"" + title + "\" found.");
+	    }
+	}
+	
+	public void searchId(int id) {
+	    boolean found = false;
+	    System.out.println("Searching for ID: " + id);
+	    for (DigitalVideoDisc disc : itemsOrdered) {
+	        if (disc.getId() == id) {
+	            System.out.println("Found: " + disc.getTitle() + " (ID: " + disc.getId() + ", Cost: $" + disc.getCost() + ")");
+	            found = true;
+	            break;
+	        }
+	    }
+	    if (!found) {
+	        System.out.println("No DVD with ID " + id + " found.");
+	    }
+	}
+	
+	public void print() {
+	    System.out.println("Cart Summary:");
+	    System.out.println("ID\tTitle\t\tCost");
+	    for (DigitalVideoDisc disc : itemsOrdered) {
+	        System.out.printf("%d\t%s\t\t%.2f\n", disc.getId(), disc.getTitle(), disc.getCost());
+	    }
+	    System.out.printf("Total Cost: %.2f\n", totalCost());
+	}
 
 }
