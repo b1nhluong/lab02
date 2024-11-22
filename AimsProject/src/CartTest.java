@@ -11,8 +11,6 @@ public class CartTest {
 		
 		cart.print();
 		cart.display();
-		cart.searchTitle("The Lion King");
-		cart.searchId(2);
 		
 	}
 }
